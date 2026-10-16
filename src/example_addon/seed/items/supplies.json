@@ -5,7 +5,13 @@
   "price": 18,
   "description": "Dried meat and hard bread. Filling, and it mends a fair amount.",
   "one_use": true,
-  "use_effect": {"effect": "heal", "targets": "individual", "base": 20, "added": 0}
+  "use_effect": {
+   "effect": "heal",
+   "targets": "individual",
+   "base": 20,
+   "added": 0
+  },
+  "section": "supplies"
  },
  {
   "key": "campfire_tea",
@@ -13,6 +19,12 @@
   "price": 30,
   "description": "A smoky brew that settles the nerves and restores magic.",
   "one_use": true,
-  "use_effect": {"effect": "restore_mp", "targets": "individual", "base": 8, "added": 4}
+  "use_effect": {
+   "effect": "restore_mp",
+   "targets": "individual",
+   "base": 8,
+   "added": 4
+  },
+  "section": "supplies"
  }
 ]
