@@ -1,0 +1,26 @@
+[
+ {
+  "key": "second_wind",
+  "name": "Second Wind",
+  "kind": "skill",
+  "mp_cost": 3,
+  "description": "Catch your breath and mend yourself.",
+  "effect": {"effect": "heal", "targets": "individual", "base": 14, "added": 6}
+ },
+ {
+  "key": "trip_wire",
+  "name": "Trip Wire",
+  "kind": "skill",
+  "mp_cost": 2,
+  "description": "Slow one foe with a snare.",
+  "effect": {"effect": "cause_bad_status", "targets": "individual", "base": 0, "added": 0, "status": "slowed"}
+ },
+ {
+  "key": "forage",
+  "name": "Forage",
+  "kind": "skill",
+  "mp_cost": 4,
+  "description": "Find something to eat along the way; the whole party recovers a little.",
+  "effect": {"effect": "heal", "targets": "party", "base": 8, "added": 4}
+ }
+]

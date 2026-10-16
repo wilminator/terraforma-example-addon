@@ -1,0 +1,20 @@
+[
+ {
+  "key": "walking_staff",
+  "name": "Walking Staff",
+  "price": 50,
+  "description": "A sturdy staff held in both hands. Wayfarers lean on it and swing it.",
+  "equip_slots": ["lhand", "rhand"],
+  "stat_bonus": {"Strength": 2, "Speed": 1},
+  "attack": {"targets": "individual", "count": 1}
+ },
+ {
+  "key": "wayfarer_cloak",
+  "name": "Wayfarer's Cloak",
+  "price": 65,
+  "description": "A weatherproof cloak, worn on the back.",
+  "equip_slots": ["back"],
+  "stat_bonus": {"Dodge": 2, "Resistance": 1},
+  "requires": {"jobs": ["wayfarer"]}
+ }
+]
