@@ -1,0 +1,18 @@
+[
+ {
+  "key": "trail_ration",
+  "name": "Trail Ration",
+  "price": 18,
+  "description": "Dried meat and hard bread. Filling, and it mends a fair amount.",
+  "one_use": true,
+  "use_effect": {"effect": "heal", "targets": "individual", "base": 20, "added": 0}
+ },
+ {
+  "key": "campfire_tea",
+  "name": "Campfire Tea",
+  "price": 30,
+  "description": "A smoky brew that settles the nerves and restores magic.",
+  "one_use": true,
+  "use_effect": {"effect": "restore_mp", "targets": "individual", "base": 8, "added": 4}
+ }
+]

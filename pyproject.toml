@@ -1,0 +1,29 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "terraforma-example-addon"
+version = "0.1.0"
+description = "An example add-on for the TerraForma RPG Engine"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Michael Allen Wilmes" }]
+requires-python = ">=3.14"
+dependencies = [
+    # The engine follows its main branch while its API is still settling;
+    # pin a release tag here (@v0.x.y) once the engine is stable.
+    "terraforma[sqlite] @ git+https://github.com/wilminator/terraforma@main",
+]
+
+[project.optional-dependencies]
+dev = ["terraforma[testing] @ git+https://github.com/wilminator/terraforma@main"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/example_addon"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
