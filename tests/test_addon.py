@@ -58,14 +58,14 @@ def test_the_whole_add_on_can_be_switched_on(components):
     assert components.check(components.default(), {}) == []
     whole = components.switch(components.default(), KEY, True)
     assert components.check(whole, {}) == []
-    assert set(whole["states"][KEY]) == {"items", "abilities", "jobs"}
+    assert set(whole["states"][KEY]) == {"items", "abilities", "jobs", "job_abilities"}
 
 
 def test_a_job_cannot_be_on_while_its_abilities_are_off(components):
     # The wayfarer needs second_wind, trip_wire and forage, so switching only the job on is refused, naming what is missing.
     job_only = {"states": {KEY: {"jobs": {"wayfarer": "on"}}}}
     problems = components.check(job_only, {})
-    assert [problem.split("needs abilities ")[1] for problem in problems] == ["'second_wind', which is off", "'trip_wire', which is off", "'forage', which is off"]
+    assert [problem.split("needs abilities ")[1] for problem in problems] == ["'second_wind', which is not on", "'trip_wire', which is not on", "'forage', which is not on"]
     with_abilities = components.switch(components.switch(components.default(), KEY, True, "abilities"), KEY, True, "jobs")
     assert components.check(with_abilities, {}) == []
 
@@ -82,3 +82,13 @@ def test_sections_switch_together(components):
 def test_unlisted_the_add_on_adds_nothing(app_client):
     assert not (ITEMS & rows(app_client, Item).keys())
     assert "wayfarer" not in rows(app_client, Job)
+
+
+def test_the_scout_learns_trip_wire_only_while_the_row_and_the_ability_are_on(app_client, components):
+    # The extra ability for the game's scout is a component of its own, keyed job:ability, and starts off: the scout is as the game made it.
+    scout = {entry["ability"] for entry in rows(app_client, Job)["scout"].abilities}
+    assert "trip_wire" not in scout and {"poison_dart", "daze"} <= scout
+    whole = components.switch(components.default(), KEY, True)
+    assert whole["states"][KEY]["job_abilities"] == {"scout:trip_wire": "on"}
+    without_ability = components.switch(whole, KEY, False, "abilities")
+    assert any("scout:trip_wire" in problem for problem in components.check(without_ability, {}))

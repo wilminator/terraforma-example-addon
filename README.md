@@ -6,10 +6,11 @@ An add-on adds content to a game without being a game. This one, **Wayfarer's Pa
 
 - a job, `wayfarer`, with three abilities (`seed/jobs.json`, `seed/abilities.json`);
 - four items (`seed/items/supplies.json`, `seed/items/gear.json`), one of them wearable only by the new job;
+- one more ability for a job the game already has (`seed/job_abilities.json`: the game's `scout` learns `trip_wire` at level 3);
 
 Its seed is split into a file per kind, and `items` into a folder of files, to show both layouts (engine README, "Seed data"). Its items and abilities sit in **sections** (`supplies`, `gear`, `camp`, `snares`) that an admin can switch on or off together: the add-on declares them in `AddOn(sections=...)` and each row names its own with `section`.
 
-**Components start off.** Listing the add-on loads its rows inactive. An admin switches them on in the planned state and commits; a job can only be on once its abilities are. The engine does not yet let an add-on teach a *game's* job an ability (`job_abilities.json` in an add-on is refused), so the `wayfarer` job carries all of its own.
+**Components start off.** Listing the add-on loads its rows inactive. An admin switches them on in the planned state and commits; a job can only be on once its abilities are. The scout's extra ability is a component of its own (`scout:trip_wire`), on only while its ability is.
 
 ## Using it
 
